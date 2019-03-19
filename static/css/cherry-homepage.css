@@ -2,3 +2,71 @@ img.cherry-homepage-logo {
     margin-bottom: -5px;
     margin-left: 10px;
 }
+
+.content-main {
+    width: 100%;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*
+.cherry-logo {
+  border: 1px solid grey;
+}
+
+@keyframes cherry-wiggles-left {
+  0%, 20%, 40%, 60%, 100% { transform: none; }
+  10%, 30%, 50% { transform: translateX(-5px); }
+}
+
+#cherry-left {
+  animation-name: cherry-wiggles-left;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes cherry-stem-wiggles-left {
+  0%, 20%, 40%, 60%, 100% { d: path("M 112.5, 180 C 100, 170, 100, 100, 175, 50"); }
+  10%, 30%, 50% { d: path("M 107.5, 180 C 90, 170, 90, 100, 175, 50"); }
+}
+
+#cherry-stem-left {
+  d: path("M 112.5, 180 C 110, 170, 100, 100, 175, 50");
+  animation-name: cherry-stem-wiggles-left;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes cherry-wiggles-right {
+  0%, 20%, 40%, 60%, 100% { transform: none; }
+  10%, 30%, 50% { transform: translateX(5px); }
+}
+
+#cherry-right {
+  animation-name: cherry-wiggles-right;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes cherry-stem-wiggles-right {
+  0%, 20%, 40%, 60%, 100% { d: path("M 187.5, 180 C 180, 170, 130, 100, 175, 50"); }
+  10%, 30%, 50% { d: path("M 192.5, 180 C 170, 170, 130, 100, 175, 50"); }
+}
+
+#cherry-stem-right {
+  d: path("M 187.5, 180 C 180, 170, 130, 100, 175, 50");
+  animation-name: cherry-stem-wiggles-right;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+#cherry-leaf-left {
+  d: path("M 175, 50 L 300, 300");
+}
+*/
