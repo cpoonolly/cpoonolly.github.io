@@ -10,8 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "@webcomponents/webcomponentsjs": "^2.2.7",
-    "cherry-logo": "git+https://git@github.com/cpoonolly/cherry-logo.git",
-    "cherry-swarm": "git+https://git@github.com/cpoonolly/cherry-swarm.git",
+    "cherry-webcomponents": "git+https://git@github.com/cpoonolly/cherry-webcomponents.git",
     "lit-element": "^2.0.1",
     "lodash": "^4.17.11"
   },

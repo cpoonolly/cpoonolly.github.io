@@ -1,2 +1,1 @@
-import 'cherry-logo';
-import 'cherry-swarm';
+import 'cherry-webcomponents';

@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <script src="index.js"></script>
-
     <style>
-        .cherry-logo-container {
+        .cherry-brackets-container {
             position: absolute;
             width: 100%;
             height: 100%;
@@ -27,8 +25,14 @@
     <title>Test Page for Cherry's Logo Webcomponent</title>
 </head>
 <body>
-    <div class="cherry-logo-container">
-        <cherry-logo width="500" height="500"></cherry-logo>
+    <div class="cherry-brackets-container">
+        <cherry-brackets id="cherry-example-brackets">
+            <div slot="slot1" class="cherry-logo-container">
+                <cherry-logo></cherry-logo>
+            </div>
+            <h1 slot="slot2">Goodbye World</h1>
+            <h1 slot="slot3">Very Long Message that is Very very very long!</h1>
+        </cherry-brackets>
     </div>
     <div class="cherry-swarm-container">
         <cherry-swarm particleCount="1000" swarmCount="5"></cherry-swarm>
