@@ -76,4 +76,7 @@ $('#cherry-btn-projects').click(() => onProjectsBtnClick());
 
 $(document).ready(function(){
   $('.tooltipped').tooltip();
+  $('.carousel.carousel-slider').carousel({
+    indicators: true
+  });
 });
