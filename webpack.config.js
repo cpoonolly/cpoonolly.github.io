@@ -1,8 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = {
+const PROD_CONFIG = {
   entry: './src/index.js',
+  mode: 'production',
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist')
@@ -11,5 +12,34 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './src/index.html'
     })
-  ]
+  ],
+  module:{
+    rules:[{
+      test: /\.html$/,
+      use: [
+        'html-loader'
+      ]
+    }, {
+      test: /\.css$/,
+      use: [
+        'style-loader',
+        'css-loader'
+      ]
+    }, {
+      test: /\.(png|svg|jpg|gif)$/,
+      use: [
+        'file-loader'
+      ]
+    }]
+  }
 };
+
+
+const DEV_CONFIG = Object.assign({}, PROD_CONFIG, {
+  mode: 'development',
+  devtool: 'inline-source-map'
+});
+
+module.exports = (env) => {
+  return (env === 'dev' ? DEV_CONFIG : PROD_CONFIG);
+}
