@@ -7,71 +7,329 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <style>
-    .cherry-homepage-container {
-      position: relative;
-      cursor: pointer;
-    }
-
-    .cherry-brackets-container,
-    .cherry-swarm-container {
-      position: absolute;
-      width: calc(100vw);
-      height: calc(100vh);
+    .main-container {
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: stretch;
+      min-height: calc(100vh);
+
+      background: radial-gradient(512.00px at 50% 50%, #FFFFFF 0%, #D2D2D2 100%);
+      font-family: 'Roboto Condensed', sans-serif;
     }
 
-    .cherry-brackets-container {
-      z-index: 1001;
-    }
+    /* Header */
 
-    .cherry-swarm-container {
-      z-index: 1000;
-    }
-
-    .cherry-swarm-container cherry-swarm {
+    .header {
       width: 100%;
-      height: 100%;
     }
 
-    .cherry-slot {
+    .header-nav {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .header-nav-link {
+      color: #D32F2F;
+      font-size: 32px;
+      font-weight: bold;
+      margin: 0px 20px;
+      font-family: 'Roboto Condensed', sans-serif;
+      text-decoration: none;
+      text-transform: uppercase;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-color: transparent;
+      border-style: solid;
+      border-width: 0 0 5px 0; 
+    }
+
+    .header-nav-link.active {
+      border-color: #D32F2F;
+    }
+
+    .content {
+      flex-grow: 1;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
-      color: hsl(0, 100%, 20%);
     }
 
-    #cherry-logo {
-      max-width: 300px;
+    /* Splash Page */
+
+    .content-splash {
+      display: none;
+      max-width: 500px;
+      min-width: 300px;
+      width: 100%;
+      margin-top: -200px;
     }
 
-    @keyframes exit-animation {
-      from { padding: calc(0vw); }
-      to { padding: calc(100vw); }
+    .content.active-content-splash .content-splash {
+      display: block;
     }
 
-    #cherry-logo-container {
-      padding: calc(0vw);
+    .splash-title {
+      margin: 0px;
+      margin-top: -100px;
+      color: #D32F2F;
+      font-size: 50px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: bold;
+      text-align: center;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     }
 
-    #cherry-logo-container.animate-exit {
-      animation-name: exit-animation;
-      animation-duration: 4s;
-      padding: calc(100vw);
+    /* About Page */
+
+    .content-about {
+      display: none;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      flex-grow: 1;
+      width: 100%;
+      padding-top: 10%;
+    }
+
+    .content.active-content-about .content-about {
+      display: flex;
+    }
+
+    .about-profile-pic {
+      width: 250px;
+      height: 250px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 150px;
+    }
+
+    .about-description {
+      margin-top: 50px;
+      color: #D32F2F;
+      font-size: 24px;
+      font-family: 'Roboto Condensed', sans-serif;
+      text-align: center;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    /* Experience Page */
+
+    .content-experience {
+      display: none;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: baseline;
+      flex-grow: 1;
+      max-width: 800px;
+    }
+
+    .content.active-content-experience .content-experience {
+      display: flex;
+    }
+
+    .experience-title {
+      font-size: 40px;
+      font-family: 'Roboto Condensed', sans-serif;
+      text-align: center;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .experience-logo {
+      width: 150px;
+      height: 150px;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .experience-sub-title {
+      font-size: 28px;
+      font-family: 'Roboto Condensed', sans-serif;
+      font-weight: normal;
+      text-align: center;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      margin: 40px 0;
+    }
+
+    .experience-description {
+      color: #D32F2F;
+      font-size: 24px;
+      font-family: 'Roboto Condensed', sans-serif;
+      text-align: center;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      margin: 50px 10px;
+      max-width: 800px;
+    }
+
+    .experience-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 300px;
+      cursor: pointer;
+      padding-top: 10%;
+    }
+
+    .experience-summary.hidden {
+      display: none;
+    }
+
+    .experience-summary:hover .experience-title {
+      text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .experience-summary:hover .experience-logo {
+      box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    }
+    
+    .experience-summary:hover .experience-sub-title {
+      text-shadow: 0px 10px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .experience-detailed {
+      display: none;
+    }
+
+    .experience-detailed.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      padding-top: 5%;
+    }
+
+    .experience-detailed-exit {
+      width: 100%;
+      text-align: right;
+      padding-right: 50px;
+    }
+
+    .experience-detailed-exit i.material-icons {
+      font-size: 32px;
+      cursor: pointer;
+    }
+
+    /* Projects Page */
+
+    .content-projects {
+      display: none;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      align-items: baseline;
+      flex-grow: 1;
+      max-width: 800px;
+      padding-bottom: 50px;
+    }
+
+    .content.active-content-projects .content-projects {
+      display: flex;
+    }
+
+    .projects-title {
+      font-size: 32px;
+      font-family: 'Roboto Condensed', sans-serif;
+      text-align: center;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .projects-logo {
+      width: 200px;
+      height: 200px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      margin-bottom: 25px;
+    }
+
+    .projects-description {
+      font-size: 18px;
+      font-family: 'Roboto Condensed', sans-serif;
+      text-align: center;
+      text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      margin: 25px 10px;
+      max-width: 800px;
+    }
+    
+    .projects-link {
+      color: #D32F2F;
+      margin: 25px 20px;
+      font-size: 18px;
+    }
+
+    .projects-summary {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 300px;
+      padding-top: 10%;
+    }
+
+    /* Scroll Animations */
+    *[data-scroll-animation]:not(.animated) {
+      visibility: hidden;
+    }
+
+    /* Small Screen Nav */
+
+    .header-small-nav {
+      display: none;
+    }
+
+    .content-small-nav {
+      display: none;
+    }
+
+    @media only screen and (max-width: 600px) {
+      .splash-title {
+        margin-top: -50px;
+      }
+
+      .header-nav {
+        display: none;
+      }
+
+      .header-small-nav {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        padding: 20px;
+      }
+
+      .header-small-nav-link i.material-icons {
+        color: #D32F2F;
+        font-size: 40px;
+        cursor: pointer;
+      }
+
+      .content.active-content-small-nav > *:not(.content-small-nav) {
+        display: none;
+      }
+
+      .content.active-content-small-nav > .content-small-nav {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-grow: 1;
+      }
     }
   </style>
 
   <!-- TODO - Move these to webpack -->
+  <!-- Normalize.css -->
+  <link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.css" rel="stylesheet">
   <!-- Jquery -->
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
-  <!-- Materialize Compiled and minified CSS/JavaScript -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E=" crossorigin="anonymous"></script>
+  <!-- Google Material Icons -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
   <!-- Webcomponent Polyfills - load webcomponents bundle, which includes all the necessary polyfills -->
   <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/webcomponents-loader.js"></script>
   <script src="https://unpkg.com/@webcomponents/webcomponentsjs@2.2.7/custom-elements-es5-adapter.js"></script>
@@ -80,17 +338,263 @@
 <link rel="shortcut icon" href="favicon.ico"></head>
 
 <body>
-  <div class="cherry-homepage-container">
-    <div class="cherry-brackets-container">
-      <cherry-brackets id="cherry-brackets" currentSlot="0" color="hsl(0, 100%, 30%)">
-        <div slot="slot0" id="cherry-logo-container">
-          <cherry-logo id="cherry-logo"></cherry-logo>
-        </div>
-      </cherry-brackets>
+  <div class="main-container">
+    <div class="header">
+      <nav class="header-nav">
+        <a class="header-nav-link" href="#about">About</a>
+        <a class="header-nav-link" href="#experience">Experience</a>
+        <a class="header-nav-link" href="#projects">Projects</a>
+      </nav>
+      <nav class="header-small-nav">
+        <a class="header-small-nav-link">
+          <i class="material-icons">menu</i>
+        </a>
+      </nav>
     </div>
+    <div class="content active-content-splash">
+      <div class="content-small-nav animated slideInDown">
+        <a class="header-nav-link" href="#about">About</a>
+        <a class="header-nav-link" href="#experience">Experience</a>
+        <a class="header-nav-link" href="#projects">Projects</a>
+      </div>
+      <div class="content-splash animated flipInY">
+        <cherry-logo id="cherry-logo"></cherry-logo>
+        <h1 class="splash-title">Ryan Poonolly</h1>
+      </div>
+      <div class="content-about">
+        <img class="about-profile-pic animated slideInDown" alt="Cherry Poonolly Profile Pic" src="b8ab0208947e9e52de9fab13ccdd9bf4.jpg">
+        <p class="about-description animated slideInUp">
+          Hi my name is Ryan Poonolly. I’m a full stack engineer with over 5 years of industry experience.
+          <br/><br/>
+          I was previously a Technical Lead at Honest Buildings (a real estate tech startup) &amp; a Tech Analyst at Goldman Sachs.
+          <br/><br/>
+          For the last 6 months I’ve been fulfilling a lifelong dream of volunteering &amp; travelling around the world.
+          <br/><br/>
+          Thus far I’ve been to South America, Europe, &amp; Southeast Asia
+        </p>
+      </div>
+      <div class="content-experience">
+        <!-- Experience Summary -->
+        <div class="experience-summary" onclick="showDetailedExperience('experience-hb')" data-scroll-animation="slideInLeft">
+          <h2 class="experience-title">Honest Buildings</h2> 
+          <img class="experience-logo" alt="Honest Buildings Logo" src="822541420d17fc1c3cab151fa68ab2b5.jpeg">
+          <h4 class="experience-sub-title">Senior Software Engineer &amp; Technical Lead</h4>
+        </div>
+        <div class="experience-summary" onclick="showDetailedExperience('experience-gs')" data-scroll-animation="slideInRight">
+          <h2 class="experience-title">Goldman Sachs</h2> 
+          <img class="experience-logo" alt="Goldman Sachs Logo" src="23d7aca833c688f75d5895570fd1e88b.png">
+          <h4 class="experience-sub-title">Technical Analyst</h4>
+        </div>
+        <div class="experience-summary" onclick="showDetailedExperience('experience-gs-intern')" data-scroll-animation="slideInLeft">
+          <h2 class="experience-title">Goldman Sachs</h2> 
+          <img class="experience-logo" alt="Goldman Sachs Logo" src="23d7aca833c688f75d5895570fd1e88b.png">
+          <h4 class="experience-sub-title">Summer Analyst</h4>
+        </div>
+        <div class="experience-summary" onclick="showDetailedExperience('experience-guardian')" data-scroll-animation="slideInRight">
+          <h2 class="experience-title">Guardian Life</h2> 
+          <img class="experience-logo" alt="Guardian Life Logo" src="330e084d8f89b6ca84bbd2c09cb74884.jpeg">
+          <h4 class="experience-sub-title">Applications Intern</h4>
+        </div>
+        <div class="experience-summary" onclick="showDetailedExperience('experience-apg')" data-scroll-animation="slideInLeft">
+          <h2 class="experience-title">APG</h2> 
+          <img class="experience-logo" alt="APG Logo" src="07c12117fe7561a2c32dd76804d4ac7a.png">
+          <h4 class="experience-sub-title">Operations Intern</h4>
+        </div>
+        <div class="experience-summary" onclick="showDetailedExperience('experience-greenlion')" data-scroll-animation="slideInRight">
+          <h2 class="experience-title">The Green Lion</h2> 
+          <img class="experience-logo" alt="The Green Lion Logo" src="15d3333e00a45bba069e678e67874282.png">
+          <h4 class="experience-sub-title">Volunteer</h4>
+        </div>
+        <div class="experience-summary" onclick="showDetailedExperience('experience-ubeci')" data-scroll-animation="slideInLeft">
+          <h2 class="experience-title">UBECI</h2> 
+          <img class="experience-logo" alt="UBECI Logo" src="df7979d2428a813cc6ed838e628672e7.png">
+          <h4 class="experience-sub-title">Volunteer</h4>
+        </div>
 
-    <div class="cherry-swarm-container">
-      <cherry-swarm id="cherry-bg-swarm" particleCount="1000"></cherry-swarm>
+        <!-- Experience Details -->
+        <div id="experience-hb" class="experience-detailed">
+          <span class="experience-detailed-exit" onclick="hideDetailedExperience()">
+            <i class="material-icons">close</i>
+          </span>
+          <h2 class="experience-title">Honest Buildings</h2> 
+          <img class="experience-logo" alt="Honest Buildings Logo" src="822541420d17fc1c3cab151fa68ab2b5.jpeg">
+          <p class="experience-description animated slideInUp">
+            Honest Buildings is a asset management platform used by some of the largest real estate owners in the industry. 
+            Our clients included companies such Brookfield, WeWork, SL Green Realty, Beacon Capital Partners, etc.
+            <br/><br/>
+            I initially joined HB in early 2015. During this time I mostly worked as an individual contributor delivering several 
+            high impact projects such as our primary user dashboard, our permissions sytem, invoicing, cost tracking, vendor managment, etc.
+            <br/><br/>
+            Over the next 3 years the company would grow from ~15 to over 100 people. Being apart of HB during this period of growth
+            was an incredibly valuable experience. I learned a lot about how to scale both a business &amp; a team up.
+            <br/><br/>
+            As the team grew, I was given the opportunity to lead a squad composed of 1 product manager, 1 designer, 2 on-site engineers,
+            &amp; 3 remote contractors. My responsibilities as Technical Lead included planning sprints/quarterly roadmaps,
+            negotiating deadlines with our clients, thinking through technical architecture, and breaking down large complex projects 
+            into clear tasks for our engineers.
+            <br/><br/>
+            While I was incredibly proud of everything me &amp; my team had accomplished during my time at HB, 
+            it had always been a lifelong ambition of mine to travel. Because the company was in a relatively stable
+            place, I decided it was the best time to leave.
+            <br/><br/>
+            I spent my last few months at HB worked closely with my managers &amp; with senior leadership to 
+            slowly transition myself off my team and train a replacement.
+            <!-- <br/><br/>
+            I learned a great deal during my time at HB &amp; built some amazing friendships. I hope to continue to have the same opportunities
+            to work on interesting and challenging problems with a passionate team at my next role! -->
+          </p>
+        </div>
+        <div id="experience-gs" class="experience-detailed">
+          <span class="experience-detailed-exit" onclick="hideDetailedExperience()">
+            <i class="material-icons">close</i>
+          </span>
+          <h2 class="experience-title">Goldman Sachs</h2> 
+          <img class="experience-logo" alt="Goldman Sachs Logo" src="23d7aca833c688f75d5895570fd1e88b.png">
+          <p class="experience-description animated slideInUp">
+            I joined Goldman Sachs after graduating college. I had previously worked there as an intern &amp; was given a return offer at the end of the summer.
+            <br/><br/>
+            At GS my team's role was to calculate firmwide exposure to counterparty default (i.e. counterparty risk).
+            <br/><br/>
+            Basically this meant we were answering the question: "if 'CompanyX' goes bankrupt how much money could the firm as a whole lose?".
+            <br/><br/>
+            Different GS trading desks would then be charged a fee based on how much counterparty risk they carry
+            &amp; the money from this fee would be used to hedge their positions.
+            <br/><br/>
+            My role at GS was to support the processes that ran these calculations &amp; support the traders hedging against this form of risk.
+          </p>
+        </div>
+        <div id="experience-gs-intern" class="experience-detailed">
+          <span class="experience-detailed-exit" onclick="hideDetailedExperience()">
+            <i class="material-icons">close</i>
+          </span>
+          <h2 class="experience-title">Goldman Sachs</h2> 
+          <img class="experience-logo" alt="Goldman Sachs Logo" src="23d7aca833c688f75d5895570fd1e88b.png">
+          <p class="experience-description animated slideInUp">
+            I was an intern at Goldman Sachs during the summer of 2012. 
+            <br/><br/>
+            My internship project involved building a platform for digitizing the terms of differnt legal aggreements & ensuring that differnt
+            departments in GS have common interpretations of these legal terms.
+            <br/><br/>
+            During my time here I was mostly working with a GS proprietary technology called "SecDb". SecDb was a globally distributed graph database
+            used throughout the firm. The language used to interact with SecDb was called "Slang" &amp; this what most of my development was done in.
+            <br/><br/>
+            At the end of my summer internship I was given an offer to return as a full time employee.
+          </p>
+        </div>
+        <div id="experience-guardian" class="experience-detailed">
+          <span class="experience-detailed-exit" onclick="hideDetailedExperience()">
+            <i class="material-icons">close</i>
+          </span>
+          <h2 class="experience-title">Guardian Life</h2> 
+          <img class="experience-logo" alt="Guardian Life Logo" src="330e084d8f89b6ca84bbd2c09cb74884.jpeg">
+          <p class="experience-description animated slideInUp">
+            I was an intern at Guardian Life Insurance during the summer of 2011.
+            <br/><br/>
+            During this time I built features for a web application used by Guardian agents to manage insurance policies.
+            <br/><br/>
+            Using Spring, IBM DB2, & jQuery I built components for managing alerts, reminders, and comments.
+          </p>
+        </div>
+        <div id="experience-apg" class="experience-detailed">
+          <span class="experience-detailed-exit" onclick="hideDetailedExperience()">
+            <i class="material-icons">close</i>
+          </span>
+          <h2 class="experience-title">APG</h2> 
+          <img class="experience-logo" alt="APG Logo" src="07c12117fe7561a2c32dd76804d4ac7a.png">
+          <p class="experience-description animated slideInUp">
+            I was an intern at APG Asset Managment during the summer of 2010.
+            <br/><br/>
+            My project at APG involved understanding legacy SAP processes and documenting them for auditors & trainees.
+          </p>
+        </div>
+        <div id="experience-greenlion" class="experience-detailed">
+          <span class="experience-detailed-exit" onclick="hideDetailedExperience()">
+            <i class="material-icons">close</i>
+          </span>
+          <h2 class="experience-title">The Green Lion</h2> 
+          <img class="experience-logo" alt="The Green Lion Logo" src="15d3333e00a45bba069e678e67874282.png">
+          <p class="experience-description animated slideInUp">
+            The Green Lion is a NGO based all over Southeast Asia. I was a volunteer at their office in Ho Chi Minh, Vietnam from February to March of 2019.
+            <br/><br/>
+            During my time as a volunteer I taught English at a local university, worked at a soup kitchen, & delivered food to a hospital.
+          </p>
+        </div>
+        <div id="experience-ubeci" class="experience-detailed">
+          <span class="experience-detailed-exit" onclick="hideDetailedExperience()">
+            <i class="material-icons">close</i>
+          </span>
+          <h2 class="experience-title">UBECI</h2> 
+          <img class="experience-logo" alt="UBECI Logo" src="df7979d2428a813cc6ed838e628672e7.png">
+          <p class="experience-description animated slideInUp">
+            UBECI (United to Benefit Ecuadorian Children International) is a NGO based in Ecuador. UBECI's mission is to improve the lives of
+            impoverished children living &amp; working in street markets by providing free educational, medical, and dental services.
+            <br/><br/>
+            I was a volunteer at UBECI from November to December of 2018. During my time at UBECI I was mostly working at the NGO offices
+            helping them to build a website & also running marketing campaigns for a Christmas fundraisor.
+            <br/><br/>
+            I also had the opportunity to visit a small make-shift day care class they were running for a day to see the street markets first hand.
+          </p>
+        </div>
+      </div>
+      <div class="content-projects">
+        <div class="projects-summary" data-scroll-animation="slideInLeft">
+          <h2 class="projects-title">Pigeon RTC</h2> 
+          <img class="projects-logo" alt="Pigeon RTC Logo" src="8dfa22b79b4bb2b2fe2ef6ef8f64c670.svg">
+          <p class="projects-description">
+            A whimsical pigeon based video chat application. Created as an April Fools day joke :)
+            <br/><br/>
+            Build with:<br/>WebRTC, React, & Material-UI
+          </p>
+          <span class="projects-links">
+            <a class="projects-link" href="https://cpoonolly.github.io/pigeon-rtc">Website</a>
+            <a class="projects-link" href="https://github.com/cpoonolly/pigeon-rtc">Github</a>
+          </span>
+        </div>
+        <div class="projects-summary" data-scroll-animation="slideInRight">
+          <h2 class="projects-title">Pokerchip Counter</h2> 
+          <img class="projects-logo" alt="Pokerchip Counter Logo" src="bcda95b82c0755d067346da84fadb696.png">
+          <p class="projects-description">
+            A Android app for tracking pokerchips in a poker game
+            <br/><br/><br/>
+            Build with:<br/>React Native
+          </p>
+          <span class="projects-links">
+            <a class="projects-link" href="https://expo.io/@cpoonolly/PokerChipCounter">Expo</a>
+            <a class="projects-link" href="https://cpoonolly.github.io/pokerchipcounter">Github</a>
+          </span>
+        </div>
+        <div class="projects-summary" data-scroll-animation="slideInLeft">
+          <h2 class="projects-title">NYC DOB ETL</h2> 
+          <img class="projects-logo" alt="NYC DOB ETL Logo" src="0a05420188d94f708c5aa3cf436f8c05.png">
+          <p class="projects-description">
+            A ETL pipeline for scraping permits from the NYC department of buildings website.
+            <br/><br/>
+            Build with:<br/>AWS Lambda, Java, Jsoup, & Redshift
+          </p>
+          <span class="projects-links">
+            <a class="projects-link" href="https://github.com/cpoonolly/nyc_dob_etl">Github</a>
+          </span>
+        </div>
+        <div class="projects-summary" data-scroll-animation="slideInRight">
+          <h2 class="projects-title">Task Graph</h2> 
+          <img class="projects-logo" alt="Task Graph Logo" src="5e08e6636ef28efa143bb0e79d897bc3.svg">
+          <p class="projects-description">
+            A simple app for creating & organizing tasks & subtasks.
+            <br/><br/><br/>
+            Build with:<br/>Angular2 & Angular Material
+          </p>
+          <span class="projects-links">
+            <a class="projects-link" href="https://cpoonolly.github.io/task-graph">Website</a>
+            <a class="projects-link" href="https://github.com/cpoonolly/task-graph">Github</a>
+          </span>
+        </div>
+        <div class="projects-summary" data-scroll-animation="slideInUp">
+          <img class="projects-logo" alt="Github Logo" src="1fbf1eeb622038a1ea2e62036d33788a.png">
+          <span class="projects-links">
+            <a class="projects-link" href="https://github.com/cpoonolly/">See more on Github!</a>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
 <script type="text/javascript" src="index.bundle.js"></script></body>
