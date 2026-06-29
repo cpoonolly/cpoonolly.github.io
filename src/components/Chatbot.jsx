@@ -5,6 +5,7 @@ const AI_UNAVAILABLE = typeof window !== 'undefined' && !window.LanguageModel &&
 
 function ChatMessage({ msg }) {
   const isUser = msg.role === 'user'
+  if (!isUser && !msg.content) return null
   return (
     <div className={`flex ${isUser ? 'justify-end' : 'justify-start'} mb-3`}>
       <div
