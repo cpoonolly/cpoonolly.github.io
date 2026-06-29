@@ -4,6 +4,7 @@ import About from './components/About.jsx'
 import Experience from './components/Experience.jsx'
 import Projects from './components/Projects.jsx'
 import Contact from './components/Contact.jsx'
+import Chatbot from './components/Chatbot.jsx'
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Projects />
         <Contact />
       </main>
+      <Chatbot />
     </div>
   )
 }
