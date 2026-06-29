@@ -82,8 +82,32 @@ export default function Chatbot() {
         return
       }
 
-      const reply = await session.prompt(text)
-      setMessages((prev) => [...prev, { role: 'assistant', content: reply }])
+      // Add an empty assistant message we'll fill in as chunks stream in
+      let replyIndex = -1
+      setMessages((prev) => {
+        replyIndex = prev.length
+        return [...prev, { role: 'assistant', content: '' }]
+      })
+
+      const stream = session.promptStreaming(text)
+      let acc = ''
+      let first = true
+      for await (const chunk of stream) {
+        // Newer Chrome yields deltas; older builds yield the cumulative text.
+        // Detect by checking whether the chunk extends what we've seen so far.
+        if (chunk.startsWith(acc)) acc = chunk
+        else acc += chunk
+
+        if (first) {
+          first = false
+          setLoading(false)
+        }
+        setMessages((prev) => {
+          const next = [...prev]
+          next[replyIndex] = { role: 'assistant', content: acc }
+          return next
+        })
+      }
     } catch {
       setMessages((prev) => [
         ...prev,
