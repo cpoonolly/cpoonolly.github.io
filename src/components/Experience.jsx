@@ -55,20 +55,13 @@ const experience = [
   },
   {
     company: 'Goldman Sachs',
-    date: 'Jun 2013 – Jan 2020',
+    date: 'Jul 2019 – Jan 2020',
     roles: [
       {
         role: 'Technology Associate',
         date: 'Jul 2019 – Jan 2020',
         bullets: [
           'Developed a bond quoting tool for sales teams to interact with an algorithmic trader, utilizing modern technologies such as React & OpenFin',
-        ],
-      },
-      {
-        role: 'Technology Analyst',
-        date: 'Jun 2013 – Feb 2015',
-        bullets: [
-          'Supported calculations of firmwide exposure to counterparty default in response to the 2008 financial crisis',
         ],
       },
     ],
@@ -83,6 +76,19 @@ const experience = [
         bullets: [
           'Led a squad of 4 in developing a SaaS platform for real estate owners',
           'Architected core infrastructure for high impact features including permissions, localization, invoicing, capital planning, and vendor management',
+        ],
+      },
+    ],
+  },
+  {
+    company: 'Goldman Sachs',
+    date: 'Jun 2013 – Feb 2015',
+    roles: [
+      {
+        role: 'Technology Analyst',
+        date: 'Jun 2013 – Feb 2015',
+        bullets: [
+          'Supported calculations of firmwide exposure to counterparty default in response to the 2008 financial crisis',
         ],
       },
     ],
