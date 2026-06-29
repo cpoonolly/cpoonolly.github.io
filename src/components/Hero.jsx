@@ -3,7 +3,7 @@ export default function Hero() {
     <header className="relative w-full min-h-screen flex items-center justify-center">
       <div className="absolute inset-0 bg-gradient-to-br from-gray-950 via-gray-900 to-emerald-950 opacity-90" />
       <div className="relative z-10 text-center px-6">
-        <h1 className="text-5xl md:text-7xl font-bold mb-4">Ryan Poonolly</h1>
+        <h1 className="text-5xl md:text-7xl font-bold mb-4">Cherry Poonolly</h1>
         <p className="text-xl md:text-2xl text-gray-300 mb-8">
           Engineering Manager / Full Stack Engineer
         </p>
