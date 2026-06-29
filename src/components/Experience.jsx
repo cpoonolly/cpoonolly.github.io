@@ -1,39 +1,51 @@
 const experience = [
   {
-    role: 'Senior Software Engineer & Technical Lead',
+    role: 'Senior Software Engineer',
+    company: 'Cubby',
+    date: 'Apr 2025 – Present',
+    desc: 'Building full-stack features for a modern self-storage platform.',
+  },
+  {
+    role: 'Engineering Manager',
+    company: 'Axios HQ',
+    date: 'Jun 2023 – Apr 2025',
+    desc: 'Led a team of 4 engineers building a Substack-like SaaS product for internal communications professionals. Mentored direct reports to senior and leadership roles. Implemented usage-based pricing and a streamlined checkout process using Stripe, Recurly, and HubSpot. Reduced infrastructure costs by over $10k/month by optimizing an analytics data pipeline using Kinesis, Athena, PySpark, and Clickhouse.',
+  },
+  {
+    role: 'Senior Backend Engineer',
+    company: 'Axios HQ',
+    date: 'Jul 2021 – Jun 2023',
+    desc: 'Built a Google Docs-like collaborative writing experience with real-time comments, version history, and live collaboration using CRDTs and libraries such as Yjs and Tiptap. Designed an AI writing recommendation engine using LangChain, OpenAI, pgvector embeddings, and in-house models.',
+  },
+  {
+    role: 'Software Engineer',
+    company: 'Cadre',
+    date: 'Jan 2020 – Jul 2021',
+    desc: 'Developed frontend and backend systems for collecting user info, running KYC checks, linking bank accounts, and managing funds using Django and Next.js. Built internal accounting tools for tracking investments, managing distributions, charging fees, and calling capital.',
+  },
+  {
+    role: 'Technology Associate',
+    company: 'Goldman Sachs',
+    date: 'Jul 2019 – Jan 2020',
+    desc: 'Followed the CTO of Honest Buildings back to Goldman Sachs to develop a bond quoting tool for sales teams to interact with an algorithmic trader, utilizing React and OpenFin.',
+  },
+  {
+    role: 'Technical Lead',
     company: 'Honest Buildings',
-    date: '2015 – 2018',
-    desc: 'Led a squad of 6 across an asset management platform used by Brookfield, WeWork, SL Green, and others. Delivered core product features including the primary dashboard, permissions system, invoicing, and vendor management. Grew the eng team from ~15 to 100+ people.',
+    date: 'Feb 2015 – Oct 2018',
+    desc: 'Led a squad of 4 engineers building a SaaS platform for real estate owners used by Brookfield, WeWork, SL Green, and others. Architected core infrastructure for high-impact features including permissions, localization, invoicing, capital planning, and vendor management.',
   },
   {
-    role: 'Technical Analyst',
+    role: 'Technology Analyst',
     company: 'Goldman Sachs',
-    date: '2013 – 2015',
-    desc: 'Supported firmwide counterparty risk calculations — quantifying potential exposure if a counterparty defaulted. Built systems to help trading desks understand and hedge their counterparty risk positions.',
-  },
-  {
-    role: 'Summer Analyst (Intern)',
-    company: 'Goldman Sachs',
-    date: 'Summer 2012',
-    desc: 'Built a platform for digitizing legal agreement terms using GS proprietary technology SecDb and the Slang programming language. Received a return offer at the end of the summer.',
-  },
-  {
-    role: 'Applications Intern',
-    company: 'Guardian Life',
-    date: 'Summer 2011',
-    desc: 'Built features for a web app used by insurance agents to manage policies. Implemented alert, reminder, and comment components using Spring, IBM DB2, and jQuery.',
+    date: 'Jun 2013 – Feb 2015',
+    desc: 'Supported firmwide calculations of exposure to counterparty default in response to the 2008 financial crisis. Built systems helping trading desks quantify and hedge counterparty risk.',
   },
   {
     role: 'Volunteer',
-    company: 'The Green Lion',
-    date: 'Feb – Mar 2019',
-    desc: 'Taught English at a local university, worked at a soup kitchen, and delivered food to a hospital in Ho Chi Minh, Vietnam.',
-  },
-  {
-    role: 'Volunteer',
-    company: 'UBECI',
-    date: 'Nov – Dec 2018',
-    desc: 'Built a website and ran Christmas fundraising campaigns for a Quito-based NGO that provides free educational, medical, and dental services to children living in street markets.',
+    company: 'The Green Lion · UBECI',
+    date: '2018 – 2019',
+    desc: 'Taught English, worked at a soup kitchen, and delivered food to hospitals in Ho Chi Minh City, Vietnam (The Green Lion). Built a website and ran fundraising campaigns for a Quito-based NGO serving children in street markets (UBECI).',
   },
 ]
 

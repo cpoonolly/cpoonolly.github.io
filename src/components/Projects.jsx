@@ -1,36 +1,43 @@
 const projects = [
   {
     name: 'Pigeon RTC',
-    desc: 'A whimsical pigeon-themed video chat app built as an April Fools joke.',
-    tech: 'WebRTC · React · Material-UI',
+    desc: 'A whimsical pigeon-themed video chat app built as an April Fools joke. Setup video chats using carrier pigeons!',
+    tech: 'JavaScript · WebRTC · React',
     links: [
       { label: 'Website', href: 'https://cpoonolly.github.io/pigeon-rtc' },
       { label: 'GitHub', href: 'https://github.com/cpoonolly/pigeon-rtc' },
     ],
   },
   {
-    name: 'Pokerchip Counter',
-    desc: 'An Android app for tracking chip counts in a poker game.',
-    tech: 'React Native',
+    name: 'Blockgame',
+    desc: 'A game engine built from scratch using Golang, WebAssembly, and WebGL.',
+    tech: 'Go · WebAssembly · WebGL',
     links: [
-      { label: 'GitHub', href: 'https://github.com/cpoonolly/pokerchipcounter' },
+      { label: 'GitHub', href: 'https://github.com/cpoonolly/blockgame' },
+    ],
+  },
+  {
+    name: 'Mobx Mine Sweeper',
+    desc: 'A simple React minesweeper app for exploring MobX state management.',
+    tech: 'JavaScript · React · MobX',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/cpoonolly/mobx-mine-sweeper' },
     ],
   },
   {
     name: 'NYC DOB ETL',
-    desc: 'An ETL pipeline that scrapes building permits from the NYC Department of Buildings website.',
-    tech: 'AWS Lambda · Java · Jsoup · Redshift',
+    desc: 'An ETL pipeline for scraping permit data from the NYC Department of Buildings website.',
+    tech: 'Java · AWS Lambda · Jsoup · Redshift',
     links: [
       { label: 'GitHub', href: 'https://github.com/cpoonolly/nyc_dob_etl' },
     ],
   },
   {
-    name: 'Task Graph',
-    desc: 'A simple app for creating and organizing tasks and subtasks as a graph.',
-    tech: 'Angular 2 · Angular Material',
+    name: 'BitTorrent Client',
+    desc: 'A simple command-line BitTorrent client written in college.',
+    tech: 'Java',
     links: [
-      { label: 'Website', href: 'https://cpoonolly.github.io/task-graph' },
-      { label: 'GitHub', href: 'https://github.com/cpoonolly/task-graph' },
+      { label: 'GitHub', href: 'https://github.com/cpoonolly/BittorrentClient' },
     ],
   },
 ]
