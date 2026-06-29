@@ -47,7 +47,11 @@ export default function Chatbot() {
       const status = typeof available === 'string' ? available : available?.available
       if (status === 'no') return null
 
-      sessionRef.current = await factory.create({ systemPrompt: SYSTEM_PROMPT })
+      sessionRef.current = await factory.create({
+        initialPrompts: [{ role: 'system', content: SYSTEM_PROMPT }],
+        expectedInputs: [{ type: 'text', languages: ['en'] }],
+        expectedOutputs: [{ type: 'text', languages: ['en'] }],
+      })
       return sessionRef.current
     } catch {
       return null
