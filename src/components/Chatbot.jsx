@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { SYSTEM_PROMPT } from '../chatbot-context.js'
-
-const AI_UNAVAILABLE = typeof window !== 'undefined' && !window.LanguageModel && !window.ai
+import { getLanguageModelFactory } from '../chrome-ai.js'
 
 function ChatMessage({ msg }) {
   const isUser = msg.role === 'user'
@@ -27,7 +26,6 @@ export default function Chatbot({ open, onOpenChange }) {
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
-  const [unavailable, setUnavailable] = useState(false)
   const sessionRef = useRef(null)
   const bottomRef = useRef(null)
 
@@ -38,15 +36,13 @@ export default function Chatbot({ open, onOpenChange }) {
   async function getSession() {
     if (sessionRef.current) return sessionRef.current
 
-    // Chrome Built-in AI: try new API first, fall back to old
-    const factory = window.LanguageModel ?? window.ai?.languageModel
+    // The chatbot only renders when support has already been confirmed, so
+    // the factory should exist here. We still guard in case session creation
+    // fails (e.g. the model needs to download and that fails).
+    const factory = getLanguageModelFactory()
     if (!factory) return null
 
     try {
-      const available = await factory.availability?.() ?? await factory.capabilities?.()
-      const status = typeof available === 'string' ? available : available?.available
-      if (status === 'no') return null
-
       sessionRef.current = await factory.create({
         initialPrompts: [{ role: 'system', content: SYSTEM_PROMPT }],
         expectedInputs: [{ type: 'text', languages: ['en'] }],
@@ -70,12 +66,11 @@ export default function Chatbot({ open, onOpenChange }) {
     try {
       const session = await getSession()
       if (!session) {
-        setUnavailable(true)
         setMessages((prev) => [
           ...prev,
           {
             role: 'assistant',
-            content: "Sorry, Chrome's built-in AI isn't available in your browser. Try Chrome 127+ with the AI features flag enabled.",
+            content: "Hmm, I couldn't start up just now — the on-device model may still be downloading. Give it a moment and try again!",
           },
         ])
         setLoading(false)
@@ -175,12 +170,12 @@ export default function Chatbot({ open, onOpenChange }) {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Ask me anything…"
-              disabled={loading || unavailable}
+              disabled={loading}
               className="flex-1 bg-slate-800 text-white text-sm rounded-full px-4 py-2 outline-none border border-slate-700 focus:border-[#e85d5d] placeholder-gray-500 disabled:opacity-50 transition-colors"
             />
             <button
               type="submit"
-              disabled={loading || !input.trim() || unavailable}
+              disabled={loading || !input.trim()}
               className="w-9 h-9 rounded-full bg-[#e85d5d] hover:bg-[#ff6b6b] disabled:opacity-40 flex items-center justify-center transition-all shrink-0"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
