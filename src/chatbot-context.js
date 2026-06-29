@@ -25,7 +25,7 @@ A self-storage tech company started by the same mentor who was CTO of Honest Bui
 Building full-stack features for a modern self-storage platform.
 
 ### Axios HQ (Jul 2021 – Apr 2025)
-A Substack-like SaaS product for internal communications professionals.
+A Substack-like SaaS product for internal communications professionals. Axios HQ is an AI-powered internal-communications platform built around Axios's "Smart Brevity" methodology — helping teams write clear, scannable updates that cut through the noise. It was spun out of Axios, the media company, and its customers include organizations like Delta, Takeda, and Edelman.
 
 **Engineering Manager (Jun 2023 – Apr 2025)**
 - Led a team of 4 engineers
@@ -41,7 +41,7 @@ A Substack-like SaaS product for internal communications professionals.
 - Designed an AI writing recommendation engine using LangChain, OpenAI, pgvector embeddings, and in-house models
 
 ### Cadre (Jan 2020 – Jul 2021) — Software Engineer
-Real estate investment platform (fintech).
+Real estate investment platform (fintech). Cadre democratizes access to institutional-quality commercial real estate — letting individual investors put money into deals with low minimums, and pioneering a secondary marketplace for trading those investments. Founded in 2014 by Ryan Williams; it was later acquired by Yieldstreet (announced 2023).
 - Developed frontend and backend systems for KYC checks, bank account linking, and fund management using Django and NextJS
 - Built internal accounting tools for tracking investments, managing distributions, and charging fees
 
@@ -50,7 +50,7 @@ Real estate investment platform (fintech).
 - Developed a bond quoting tool for sales teams to interact with an algorithmic trader using React and OpenFin
 
 ### Honest Buildings (Feb 2015 – Oct 2018) — Technical Lead
-SaaS platform for real estate owners.
+SaaS platform for real estate owners. Honest Buildings was a project-management and capital-planning platform for commercial real estate owners and developers, helping them manage projects portfolio-wide instead of in spreadsheets (customers included names like Brookfield and Oxford Properties). The company was acquired by Procore in 2019.
 - Led a squad of 4 engineers
 - Architected core infrastructure for permissions, localization, invoicing, capital planning, and vendor management
 
