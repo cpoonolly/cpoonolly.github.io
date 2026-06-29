@@ -70,26 +70,33 @@ After leaving Honest Buildings, Cherry spent about 6 months traveling and volunt
 
 ## Projects
 
+Cherry can speak in technical detail about how each of these works.
+
 ### Pigeon RTC
-A whimsical pigeon-themed video chat app built as an April Fools' joke — because of course he built it on his birthday. It actually works: you set up video chats using carrier pigeons as the metaphor.
-- Tech: JavaScript, WebRTC, React
+A whimsical pigeon-themed video chat app built as an April Fools' joke — because of course he built it on his birthday. It actually works.
+- Tech: JavaScript, React, WebRTC, Material-UI; an optional Node + socket.io signaling server for the "with a server" comparison mode.
+- How it works: Normally WebRTC needs a signaling server to exchange connection info between two peers. Pigeon RTC's gag is that *you* are the signaling channel — you send the info "via carrier pigeon." When you start a connection it creates an RTCPeerConnection and bundles the SDP offer/answer plus all the gathered ICE candidates into a single copy-pasteable blob. You send that blob to your friend (by any means — the joke is a literal pigeon), they paste it in and send theirs back, and the two browsers connect peer-to-peer for video. Bundling everything into one message is a deliberate concession so you only have to "send one pigeon" instead of trickling ICE candidates back and forth. It uses a big list of public STUN servers (and a TURN fallback) for NAT traversal. The app has side-by-side tabs demonstrating the pigeon approach vs. the traditional server approach.
 - Live at: cpoonolly.github.io/pigeon-rtc
 
 ### Blockgame
-A game engine built entirely from scratch using Go, WebAssembly, and WebGL. A pure-fun project to explore how game engines work at a low level.
-- Tech: Go, WebAssembly, WebGL
+A 3D game engine built entirely from scratch in Go, compiled to WebAssembly, rendering with WebGL. A pure-fun project to learn how game engines work at a low level.
+- Tech: Go, WebAssembly, WebGL.
+- How it works: The engine core is pure Go (player, enemies, camera, world blocks, collisions, physics with gravity/velocity/dampening, and a render loop with update/render interfaces). It's compiled with GOOS=js GOARCH=wasm into a .wasm bundle. Because the standard library has no WebGL binding, Cherry wrote his own thin WebGL wrapper in Go over syscall/js that calls into the browser's canvas/WebGL context (shaders, buffers, draw calls). There's a built-in level editor mode: you can fly around and place/delete world blocks and enemies, and levels are saved/loaded as JSON map files. A tiny Go server just serves the static files and wasm.
 
 ### Mobx Mine Sweeper
-A React minesweeper app built to explore MobX state management.
-- Tech: JavaScript, React, MobX
+A React Minesweeper game built to explore MobX state management.
+- Tech: JavaScript, React, MobX, mobx-react.
+- How it works: All game logic and state live in a single observable MobX store (board generation, mine placement, flood-fill reveal, flagging, win/lose detection, timer). The React components are thin mobx-react observers that re-render automatically when the store changes. The store has its own unit-test spec. Built with Create React App and deployed via gh-pages.
 
 ### NYC DOB ETL
-An ETL pipeline for scraping permit data from the NYC Department of Buildings website.
-- Tech: Java, AWS Lambda, Jsoup, Redshift
+A serverless ETL system that scrapes permit data from the NYC Department of Buildings website into a data warehouse. Built during his time at Honest Buildings (the package is "hbetl").
+- Tech: Java, AWS Lambda, S3, Jsoup, Redshift, Gradle.
+- How it works: It's actually two pipelines. One scrapes individual DOB "job" (permit) pages — loading the raw HTML, parsing fields out with Jsoup, running validators (including detection of the site's throttle/rate-limit page so it backs off), and loading into Redshift. The other ingests the DOB's published stat-report files against a defined column schema. The whole thing is packaged as a single fat JAR (Gradle shadow plugin) that's uploaded to S3 and wired into four AWS Lambda functions (load job page, scrape job pages, load stat report, process stat report) that invoke each other to fan out the work. Gradle tasks automate building, uploading to S3, and updating all the Lambdas.
 
 ### BitTorrent Client
-A command-line BitTorrent client written in college.
-- Tech: Java
+A command-line BitTorrent client implementing the real BitTorrent protocol, written in college (a partner project).
+- Tech: Java.
+- How it works: It parses .torrent files using a bencoding (Bencoder) decoder to pull out the tracker URL, piece hashes, and file metadata. It contacts the tracker over HTTP to get a list of peers, then speaks the BitTorrent peer wire protocol directly over sockets: the handshake (validating the info hash and peer ID), then the message types — keep-alive, interested/uninterested, choke/unchoke, have, bitfield, request, and piece — to download the file piece by piece and verify each piece against its SHA-1 hash.
 
 ---
 
