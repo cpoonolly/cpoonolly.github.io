@@ -30,12 +30,15 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        # Use `npm install` rather than `npm ci` so npm resolves the
-        # correct platform-specific optional dep (e.g. @rollup/rollup-linux-x64-gnu)
-        # on the Linux runner. The lockfile generated on macOS omits other
-        # platforms' rollup binaries, which breaks `npm ci` here.
+        # Remove the lockfile before installing so npm resolves the correct
+        # platform-specific optional dep (e.g. @rollup/rollup-linux-x64-gnu)
+        # fresh on the Linux runner. The lockfile generated on macOS pins
+        # rollup's optional deps to the darwin binary only, and npm honors
+        # that even with `npm install`, leaving the Linux binary missing.
         # See https://github.com/npm/cli/issues/4828
-        run: npm install
+        run: |
+          rm -f package-lock.json
+          npm install
 
       - name: Build
         run: npm run build
