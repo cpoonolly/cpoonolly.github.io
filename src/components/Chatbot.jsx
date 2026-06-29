@@ -21,10 +21,9 @@ function ChatMessage({ msg }) {
   )
 }
 
-export default function Chatbot() {
-  const [open, setOpen] = useState(false)
+export default function Chatbot({ open, onOpenChange }) {
   const [messages, setMessages] = useState([
-    { role: 'assistant', content: "Hey! I'm Cherry's personal assistant. Ask me anything about them — hobbies, travel stories, fun projects, whatever you're curious about!" },
+    { role: 'assistant', content: "Hey! I'm an AI that knows a lot about Cherry. Ask me anything about him — his background, travel stories, projects, whatever you're curious about!" },
   ])
   const [input, setInput] = useState('')
   const [loading, setLoading] = useState(false)
@@ -123,7 +122,7 @@ export default function Chatbot() {
     <>
       {/* Floating bubble */}
       <button
-        onClick={() => setOpen((o) => !o)}
+        onClick={() => onOpenChange(!open)}
         aria-label="Chat with Cherry's assistant"
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#e85d5d] hover:bg-[#ff6b6b] text-white shadow-lg flex items-center justify-center transition-all hover:scale-110 active:scale-95"
       >
