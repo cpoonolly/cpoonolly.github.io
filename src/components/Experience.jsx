@@ -111,16 +111,16 @@ const experience = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24 border-t border-gray-800">
+    <section id="experience" className="py-24 border-t border-slate-800">
       <h2 className="text-3xl font-bold mb-12">Experience</h2>
       <div className="space-y-6">
         {experience.map((item) => (
-          <div key={item.company} className="rounded-xl border border-gray-800 bg-gray-900/40 overflow-hidden">
-            <div className="flex justify-between items-baseline px-6 py-4 border-b border-gray-800">
-              <h3 className="text-xl font-bold text-emerald-400">{item.company}</h3>
+          <div key={item.company} className="rounded-xl border border-slate-800 bg-slate-900/40 overflow-hidden">
+            <div className="flex justify-between items-baseline px-6 py-4 border-b border-slate-800">
+              <h3 className="text-xl font-bold text-[#ff6b6b]">{item.company}</h3>
               <span className="text-gray-500 text-sm">{item.date}</span>
             </div>
-            <div className="divide-y divide-gray-800">
+            <div className="divide-y divide-slate-800">
               {item.roles.map((r) => (
                 <div key={r.role} className="px-6 py-5">
                   <div className="flex justify-between items-baseline">

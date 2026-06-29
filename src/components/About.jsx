@@ -8,7 +8,7 @@ export default function About() {
         wearing hats from individual contributor to engineering manager.
         <br /><br />
         Currently a Senior Software Engineer at{' '}
-        <a href="https://cubbystorage.com" target="_blank" rel="noopener noreferrer" className="text-emerald-400 hover:text-emerald-300 transition-colors">Cubby</a>.
+        <a href="https://cubbystorage.com" target="_blank" rel="noopener noreferrer" className="text-[#ff6b6b] hover:text-[#ff8a80] transition-colors">Cubby</a>.
         Previously EM &amp; Senior Backend Engineer at Axios HQ, Software Engineer at Cadre,
         and Technical Lead at Honest Buildings. Earlier in my career I was a Technology Associate at Goldman Sachs.
         <br /><br />
@@ -17,7 +17,7 @@ export default function About() {
       <div className="mt-8 flex flex-wrap gap-2">
         {['Python', 'TypeScript', 'React', 'Next.js', 'Django REST', 'FastAPI', 'Node', 'Java',
           'Postgres', 'Redis', 'RabbitMQ', 'Kubernetes', 'Docker', 'AWS', 'LangChain'].map((skill) => (
-          <span key={skill} className="px-3 py-1 text-sm rounded-full border border-gray-700 text-gray-400">
+          <span key={skill} className="px-3 py-1 text-sm rounded-full border border-slate-700 text-gray-400">
             {skill}
           </span>
         ))}
