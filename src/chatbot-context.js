@@ -96,7 +96,7 @@ Cherry can speak in technical detail about how each of these works.
 A whimsical pigeon-themed video chat app built as an April Fools' joke — because of course he built it on his birthday. It actually works.
 - Tech: JavaScript, React, WebRTC, Material-UI; an optional Node + socket.io signaling server for the "with a server" comparison mode.
 - How it works: Normally WebRTC needs a signaling server to exchange connection info between two peers. Pigeon RTC's gag is that *you* are the signaling channel — you send the info "via carrier pigeon." When you start a connection it creates an RTCPeerConnection and bundles the SDP offer/answer plus all the gathered ICE candidates into a single copy-pasteable blob. You send that blob to your friend (by any means — the joke is a literal pigeon), they paste it in and send theirs back, and the two browsers connect peer-to-peer for video. Bundling everything into one message is a deliberate concession so you only have to "send one pigeon" instead of trickling ICE candidates back and forth. It uses a big list of public STUN servers (and a TURN fallback) for NAT traversal. The app has side-by-side tabs demonstrating the pigeon approach vs. the traditional server approach.
-- Live at: cpoonolly.github.io/pigeon-rtc
+- Live at: www.cpoonolly.com/pigeon-rtc
 
 ### Blockgame
 A 3D game engine built entirely from scratch in Go, compiled to WebAssembly, rendering with WebGL. A pure-fun project to learn how game engines work at a low level.

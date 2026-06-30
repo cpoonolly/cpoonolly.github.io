@@ -6,7 +6,9 @@ export default function Contact() {
         Open to new opportunities and interesting projects.
       </p>
       <a
-        href="mailto:rpoonolly@gmail.com"
+        href="https://www.linkedin.com/in/ryan-poonolly-23060824/"
+        target="_blank"
+        rel="noopener noreferrer"
         className="inline-block px-8 py-3 rounded-full font-medium bg-[#e85d5d] text-white hover:bg-[#ff6b6b] transition-all hover:scale-105"
       >
         Say Hello

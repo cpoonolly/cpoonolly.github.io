@@ -4,7 +4,7 @@ const projects = [
     desc: 'A whimsical pigeon-themed video chat app built as an April Fools joke. Setup video chats using carrier pigeons!',
     tech: 'JavaScript · WebRTC · React',
     links: [
-      { label: 'Website', href: 'https://cpoonolly.github.io/pigeon-rtc' },
+      { label: 'Website', href: 'https://www.cpoonolly.com/pigeon-rtc' },
       { label: 'GitHub', href: 'https://github.com/cpoonolly/pigeon-rtc' },
     ],
   },
