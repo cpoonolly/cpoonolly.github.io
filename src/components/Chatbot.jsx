@@ -1,7 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import { SYSTEM_PROMPT } from '../chatbot-context.js'
 import { getLanguageModelFactory } from '../chrome-ai.js'
-import { track } from '../analytics.js'
 
 function ChatMessage({ msg }) {
   const isUser = msg.role === 'user'
@@ -63,7 +62,6 @@ export default function Chatbot({ open, onOpenChange }) {
     setInput('')
     setMessages((prev) => [...prev, { role: 'user', content: text }])
     setLoading(true)
-    track('chat_message_sent')
 
     try {
       const session = await getSession()
@@ -119,10 +117,7 @@ export default function Chatbot({ open, onOpenChange }) {
     <>
       {/* Floating bubble */}
       <button
-        onClick={() => {
-          if (!open) track('chat_opened', { source: 'bubble' })
-          onOpenChange(!open)
-        }}
+        onClick={() => onOpenChange(!open)}
         aria-label="Chat with Cherry's assistant"
         className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-[#e85d5d] hover:bg-[#ff6b6b] text-white shadow-lg flex items-center justify-center transition-all hover:scale-110 active:scale-95"
       >
