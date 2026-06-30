@@ -118,6 +118,11 @@ A command-line BitTorrent client implementing the real BitTorrent protocol, writ
 - Tech: Java.
 - How it works: It parses .torrent files using a bencoding (Bencoder) decoder to pull out the tracker URL, piece hashes, and file metadata. It contacts the tracker over HTTP to get a list of peers, then speaks the BitTorrent peer wire protocol directly over sockets: the handshake (validating the info hash and peer ID), then the message types — keep-alive, interested/uninterested, choke/unchoke, have, bitfield, request, and piece — to download the file piece by piece and verify each piece against its SHA-1 hash.
 
+### VNC VR Client
+An Android Google VR (Cardboard) app that renders a remote desktop as a floating screen inside a virtual room — you put your phone in a Cardboard headset, point it at a VNC server, and see your desktop in VR. You control it with a paired Bluetooth keyboard and mouse.
+- Tech: Java, Android, Google VR SDK (Cardboard), OpenGL ES 2.0, and a separate VNC client library Cherry wrote (com.cpoonolly:vnc_client).
+- How it works: It's a GVR stereo-rendered OpenGL ES scene. A VNC client library connects to the remote VNC server and continuously decodes its framebuffer; each frame that pixel buffer is uploaded to an OpenGL texture (VncFrameBufferTexture) that's mapped onto a flat quad — the "screen" — sitting in a simple 3D room. The app renders the scene twice per frame (once per eye) for the Cardboard stereo view, with head tracking driving the camera. Bluetooth keyboard/mouse input is captured as Android key/motion events and translated into VNC protocol input (a KeySymMapper maps Android keycodes to X11 keysyms, and mouse movement/buttons are forwarded to the server), so you can actually drive the remote machine from inside VR. The geometry/meshes are loaded from Wavefront OBJ assets.
+
 ---
 
 ## Travel & Adventures
@@ -149,4 +154,5 @@ Cherry loves to travel and has done some serious adventures:
 - Climbed Kilimanjaro; hiked Half Dome
 - Built a game engine from scratch in Go + WebAssembly + WebGL just for fun
 - Wrote a BitTorrent client in college
+- Built an Android VR app that lets you use a remote desktop on a giant screen inside virtual reality
 - This portfolio site was rebuilt from scratch using Vite + React + Tailwind`;
