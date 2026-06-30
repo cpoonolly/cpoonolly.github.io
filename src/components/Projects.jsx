@@ -37,7 +37,15 @@ const projects = [
     desc: 'A simple command-line BitTorrent client written in college.',
     tech: 'Java',
     links: [
-      { label: 'GitHub', href: 'https://github.com/cpoonolly/BittorrentClient' },
+      { label: 'GitHub', href: 'https://github.com/cpoonolly/BitTorrentClient' },
+    ],
+  },
+  {
+    name: 'VNC VR Client',
+    desc: 'An Android Cardboard VR app that renders a remote desktop as a floating screen in VR — control it with a paired Bluetooth keyboard and mouse.',
+    tech: 'Java · Android · Google VR · OpenGL ES',
+    links: [
+      { label: 'GitHub', href: 'https://github.com/cpoonolly/vnc_vr_client' },
     ],
   },
 ]
