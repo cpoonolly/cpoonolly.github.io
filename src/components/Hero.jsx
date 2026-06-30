@@ -1,3 +1,5 @@
+import { track } from '../analytics.js'
+
 export default function Hero({ onOpenChat, showChatButton }) {
   return (
     <header className="relative w-full min-h-screen flex items-center justify-center">
@@ -10,7 +12,10 @@ export default function Hero({ onOpenChat, showChatButton }) {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           {showChatButton && (
             <button
-              onClick={onOpenChat}
+              onClick={() => {
+                track('hero_ask_me_anything_click')
+                onOpenChat()
+              }}
               className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-medium bg-[#e85d5d] text-white hover:bg-[#ff6b6b] transition-all hover:scale-105"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -23,6 +28,7 @@ export default function Hero({ onOpenChat, showChatButton }) {
               a secondary ghost button; otherwise it's the lone primary CTA. */}
           <a
             href="#projects"
+            onClick={() => track('hero_see_my_work_click')}
             className={
               showChatButton
                 ? 'inline-block px-8 py-3 rounded-full font-medium border border-slate-600 text-gray-300 hover:border-slate-400 hover:text-white transition-all hover:scale-105'

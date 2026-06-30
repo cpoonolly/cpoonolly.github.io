@@ -1,3 +1,5 @@
+import { track } from '../analytics.js'
+
 const projects = [
   {
     name: 'Pigeon RTC',
@@ -62,6 +64,12 @@ export default function Projects() {
                   href={link.href}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() =>
+                    track('project_link_click', {
+                      project: project.name,
+                      link: link.label,
+                    })
+                  }
                   className="text-sm text-gray-400 hover:text-[#ff6b6b] transition-colors"
                 >
                   {link.label} →
